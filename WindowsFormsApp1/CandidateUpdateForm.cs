@@ -9,26 +9,28 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp1
 {
-    public partial class LoginForm : Form
+    public partial class CandidateUpdateForm : Form
     {
         private Form main;
-
-        public LoginForm()
+        public CandidateUpdateForm()
         {
             InitializeComponent();
         }
-
-        public LoginForm(Form main)
+        public CandidateUpdateForm(Form main)
         {
             InitializeComponent();
             this.main = main;
         }
-
-
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -44,10 +46,6 @@ namespace WindowsFormsApp1
             {
                 return false;
             }
-        }
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
         }
 
         public bool IsValidPassword(string password)
@@ -73,12 +71,44 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(!IsValidEmail(textBox1.Text)&& !IsValidPassword(textBox2.Text))
+            string firstName = textBox1.Text;
+            string secondName = textBox2.Text;
+            string city = textBox3.Text;
+            string email = textBox4.Text;
+            string password = textBox6.Text;
+            string confirmpassword = textBox8.Text;
+            string goals = textBox7.Text;
+
+            if (firstName == "" || secondName == "" || city == "" || email == "" || goals == "")
             {
-                MessageBox.Show("Invalid credentials");
-                return; 
+                MessageBox.Show("Please fill all fields!");
+                return;
             }
 
+            if (!IsValidEmail(email))
+            {
+                MessageBox.Show("Please Submit Valid Email");
+                return;
+            }
+
+            if (!IsValidPassword(password))
+            {
+                MessageBox.Show("Please Submit Valid Complex Password like Lolo123#");
+                return;
+            }
+            if (password != confirmpassword)
+            {
+                MessageBox.Show("Please Make Sure the Passwords are the same");
+                return;
+            }
+
+            MessageBox.Show($"Update Successful!\n\n" +
+                $"Name: {firstName} {secondName}\n" +
+                $"City: {city}\n" +
+                $"Email: {email}\n" +
+                $"Password: {password}");
+
+            // missing the update statements for oracle
         }
 
         private void button2_Click(object sender, EventArgs e)

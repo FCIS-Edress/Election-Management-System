@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CandidateDashboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CandidateDashboardForm.Designer.cs">
+      <DependentUpon>CandidateDashboardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CandidatesForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CandidatesForm.Designer.cs">
       <DependentUpon>CandidatesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CandidateUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CandidateUpdateForm.Designer.cs">
+      <DependentUpon>CandidateUpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -72,8 +84,26 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserDashboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserDashboardForm.Designer.cs">
+      <DependentUpon>UserDashboardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserUpdateForm.Designer.cs">
+      <DependentUpon>UserUpdateForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CandidateDashboardForm.resx">
+      <DependentUpon>CandidateDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CandidatesForm.resx">
       <DependentUpon>CandidatesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CandidateUpdateForm.resx">
+      <DependentUpon>CandidateUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -92,6 +122,12 @@
     </Compile>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDashboardForm.resx">
+      <DependentUpon>UserDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserUpdateForm.resx">
+      <DependentUpon>UserUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -9,19 +9,19 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp1
 {
-    public partial class RegisterForm : Form
+    public partial class UserUpdateForm : Form
     {
         private Form main;
-
-        public RegisterForm()
+        public UserUpdateForm()
         {
             InitializeComponent();
         }
 
-        public RegisterForm(Form main)
+        public UserUpdateForm(Form main)
         {
             InitializeComponent();
             this.main = main;
@@ -32,22 +32,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void textBox6_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -56,21 +41,18 @@ namespace WindowsFormsApp1
         {
             string firstName = textBox1.Text;
             string secondName = textBox2.Text;
-            string birthday = dateTimePicker1.Value.ToShortDateString();
-            string gender = comboBox1.SelectedItem.ToString();
-            string nationalID = textBox5.Text;
             string city = textBox3.Text;
             string email = textBox4.Text;
             string password = textBox6.Text;
             string confirmpassword = textBox8.Text;
 
-            if (firstName == "" || secondName == "" || nationalID == "" || city == "" || gender == "" || birthday == "" || email == "")
+            if (firstName == "" || secondName == "" || city == "" || email == "")
             {
                 MessageBox.Show("Please fill all fields!");
                 return;
             }
 
-            if(!IsValidEmail(email))
+            if (!IsValidEmail(email))
             {
                 MessageBox.Show("Please Submit Valid Email");
                 return;
@@ -81,83 +63,17 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Please Submit Valid Complex Password like Lolo123#");
                 return;
             }
-            if(password!= confirmpassword)
+            if (password != confirmpassword)
             {
                 MessageBox.Show("Please Make Sure the Passwords are the same");
                 return;
             }
 
-            MessageBox.Show($"Registration Successful!\n\n" +
+            MessageBox.Show($"Update Successful!\n\n" +
                 $"Name: {firstName} {secondName}\n" +
-                $"Birthday: {birthday}\n" +
-                $"Gender: {gender}\n" +
-                $"National ID: {nationalID}\n" +
-                $"City: {city}\n"+
+                $"City: {city}\n" +
                 $"Email: {email}\n" +
                 $"Password: {password}");
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.main.Show();
-            this.Close();
-        }
-
-        private void RegisterForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
         }
         private bool IsValidEmail(string email)
         {
@@ -193,12 +109,17 @@ namespace WindowsFormsApp1
             return true;
         }
 
-        private void label8_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void label9_Click(object sender, EventArgs e)
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -212,5 +133,13 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.main.Show();
+            this.Close();
+        }
     }
+
+
 }

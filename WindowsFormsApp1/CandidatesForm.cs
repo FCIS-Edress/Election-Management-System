@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -38,6 +39,7 @@ namespace WindowsFormsApp1
             string email = textBox4.Text;
             string password = textBox6.Text;
             string confirmPassword = textBox8.Text;
+            string goals = textBox7.Text;
 
             // Basic field validation
             if (string.IsNullOrWhiteSpace(firstName) ||
@@ -45,7 +47,8 @@ namespace WindowsFormsApp1
                 string.IsNullOrWhiteSpace(nationalID) ||
                 string.IsNullOrWhiteSpace(city) ||
                 string.IsNullOrWhiteSpace(gender) ||
-                string.IsNullOrWhiteSpace(email))
+                string.IsNullOrWhiteSpace(email) ||
+                string.IsNullOrWhiteSpace(goals))
             {
                 MessageBox.Show("Please fill all fields!");
                 return;
@@ -116,8 +119,15 @@ namespace WindowsFormsApp1
         // Email validation
         private bool IsValidEmail(string email)
         {
-            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            return Regex.IsMatch(email, pattern);
+            try
+            {
+                var addr = new MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         // Password validation: 8+ chars, 1 uppercase, 1 number, 1 special
@@ -134,5 +144,14 @@ namespace WindowsFormsApp1
             return true;
         }
 
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
