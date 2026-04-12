@@ -54,17 +54,18 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             string firstName = textBox1.Text;
             string secondName = textBox2.Text;
             string birthday = dateTimePicker1.Value.ToShortDateString();
-            string gender = comboBox1.SelectedItem.ToString();
+            string gender = comboBox1.SelectedItem?.ToString() ?? "";
             string nationalID = textBox5.Text;
             string city = textBox3.Text;
             string email = textBox4.Text;
             string password = textBox6.Text;
             string confirmpassword = textBox8.Text;
 
-            if (firstName == "" || secondName == "" || nationalID == "" || city == "" || gender == "" || birthday == "" || email == "")
+            if (firstName == "" || secondName == "" || nationalID == "" || city == "" || gender == "" || birthday == "" || email == "" || password == "" || confirmpassword == "")
             {
                 MessageBox.Show("Please fill all fields!");
                 return;
@@ -209,6 +210,11 @@ namespace WindowsFormsApp1
         }
 
         private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

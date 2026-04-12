@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllowingToRegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllowingToRegisterForm.Designer.cs">
+      <DependentUpon>AllowingToRegisterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CandidateDashboardForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     <Compile Include="UserUpdateForm.Designer.cs">
       <DependentUpon>UserUpdateForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AllowingToRegisterForm.resx">
+      <DependentUpon>AllowingToRegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CandidateDashboardForm.resx">
       <DependentUpon>CandidateDashboardForm.cs</DependentUpon>
     </EmbeddedResource>

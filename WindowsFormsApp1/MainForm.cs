@@ -23,8 +23,8 @@ namespace WindowsFormsApp1
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm(this);
-            registerForm.Show();
+            AllowingToRegisterForm allowingtoregisterform = new AllowingToRegisterForm(this);
+            allowingtoregisterform.Show();
             this.Hide();
         }
         private void button2_Click(object sender, EventArgs e)
@@ -37,9 +37,5 @@ namespace WindowsFormsApp1
         {
             Application.Exit();
         }
-
-
-
-
     }
 }
