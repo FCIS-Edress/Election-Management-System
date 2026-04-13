@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminDashboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminDashboardForm.Designer.cs">
+      <DependentUpon>AdminDashboardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AllowingToRegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,12 @@
     </Compile>
     <Compile Include="CandidateUpdateForm.Designer.cs">
       <DependentUpon>CandidateUpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DateManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DateManagementForm.Designer.cs">
+      <DependentUpon>DateManagementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -102,6 +114,9 @@
     <Compile Include="UserUpdateForm.Designer.cs">
       <DependentUpon>UserUpdateForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdminDashboardForm.resx">
+      <DependentUpon>AdminDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AllowingToRegisterForm.resx">
       <DependentUpon>AllowingToRegisterForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CandidateUpdateForm.resx">
       <DependentUpon>CandidateUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DateManagementForm.resx">
+      <DependentUpon>DateManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
