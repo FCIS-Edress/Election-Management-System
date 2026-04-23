@@ -96,6 +96,7 @@
             this.Controls.Add(this.label1);
             this.Name = "CandidateDashboardForm";
             this.Text = "CandidateDashboardForm";
+            this.Load += new System.EventHandler(this.CandidateDashboardForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

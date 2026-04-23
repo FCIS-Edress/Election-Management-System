@@ -16,3 +16,5 @@ C:\Users\UsifE\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsF
 C:\Users\UsifE\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.UserDashboardForm.resources
 C:\Users\UsifE\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.UserUpdateForm.resources
 C:\Users\UsifE\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.AllowingToRegisterForm.resources
+C:\Users\UsifE\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.AdminDashboardForm.resources
+C:\Users\UsifE\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.DateManagementForm.resources

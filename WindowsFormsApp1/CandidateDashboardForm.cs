@@ -40,5 +40,10 @@ namespace WindowsFormsApp1
             candidateupdateform.Show();
             this.Hide();
         }
+
+        private void CandidateDashboardForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -64,6 +64,12 @@
     <Compile Include="CandidateDashboardForm.Designer.cs">
       <DependentUpon>CandidateDashboardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CandidatesEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CandidatesEditForm.Designer.cs">
+      <DependentUpon>CandidatesEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CandidatesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,17 +108,35 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResultsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResultsForm.Designer.cs">
+      <DependentUpon>ResultsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserDashboardForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserDashboardForm.Designer.cs">
       <DependentUpon>UserDashboardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsersEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsersEditForm.Designer.cs">
+      <DependentUpon>UsersEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserUpdateForm.Designer.cs">
       <DependentUpon>UserUpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserVoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserVoteForm.Designer.cs">
+      <DependentUpon>UserVoteForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AdminDashboardForm.resx">
       <DependentUpon>AdminDashboardForm.cs</DependentUpon>
@@ -122,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CandidateDashboardForm.resx">
       <DependentUpon>CandidateDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CandidatesEditForm.resx">
+      <DependentUpon>CandidatesEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CandidatesForm.resx">
       <DependentUpon>CandidatesForm.cs</DependentUpon>
@@ -150,11 +177,20 @@
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ResultsForm.resx">
+      <DependentUpon>ResultsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserDashboardForm.resx">
       <DependentUpon>UserDashboardForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UsersEditForm.resx">
+      <DependentUpon>UsersEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserUpdateForm.resx">
       <DependentUpon>UserUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserVoteForm.resx">
+      <DependentUpon>UserVoteForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

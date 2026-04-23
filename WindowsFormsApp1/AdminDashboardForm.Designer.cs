@@ -99,6 +99,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "Voters";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -118,6 +119,7 @@
             this.button7.TabIndex = 7;
             this.button7.Text = "Start Elections";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -136,6 +138,7 @@
             this.button9.TabIndex = 9;
             this.button9.Text = "End Elections";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -145,6 +148,7 @@
             this.button10.TabIndex = 10;
             this.button10.Text = "Show Results for Voters";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // AdminDashboardForm
             // 

@@ -69,7 +69,7 @@ namespace WindowsFormsApp1
 
             if (result == _Admin)
             {
-
+                  // remove
             }
             else if(result == _Candidate)
             {

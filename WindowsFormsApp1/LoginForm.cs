@@ -78,13 +78,25 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Invalid credentials");
                 return; 
             }
+            //if(mawgood)
+            //{
 
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Invalid credentials");
+            //}
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.main.Show();
             this.Close();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
