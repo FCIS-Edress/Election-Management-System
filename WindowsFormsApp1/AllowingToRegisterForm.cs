@@ -63,15 +63,10 @@ namespace WindowsFormsApp1
 
             int result = firstPIN * secondPIN * thirdPIN * fourthPIN;
 
-            int _Admin = (int)((Math.Pow(firstPIN - 7, 2) - 49) * (Math.Pow(thirdPIN + 6, 2) - 36));// (x+7)(x-7)(x-6)(x+6)
             int _Candidate = (int)((Math.Pow(firstPIN + 5, 2) - 25) * (Math.Pow(thirdPIN + 4, 2) - 16));// (x-5)(x+5)(x-4)(x+4)
             int _Voter = (int)((Math.Pow(firstPIN + 3, 2) - 9) * (Math.Pow(thirdPIN - 2, 2) - 4));// (x-3)(x+3)(x+2)(x-2)
 
-            if (result == _Admin)
-            {
-                  // remove
-            }
-            else if(result == _Candidate)
+            if(result == _Candidate)
             {
                 CandidatesForm candidateform = new CandidatesForm(this);
                 candidateform.Show();

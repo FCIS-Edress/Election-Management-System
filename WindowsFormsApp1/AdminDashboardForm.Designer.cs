@@ -39,33 +39,37 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(815, 61);
+            this.label1.Location = new System.Drawing.Point(393, 22);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label1.Size = new System.Drawing.Size(720, 58);
+            this.label1.Size = new System.Drawing.Size(599, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome To Admin Dashboard";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(294, 374);
+            this.button1.Location = new System.Drawing.Point(314, 104);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(387, 140);
+            this.button1.Size = new System.Drawing.Size(341, 87);
             this.button1.TabIndex = 1;
             this.button1.Text = "Accept/Reject Candiadtes";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(2311, 1116);
+            this.button2.Location = new System.Drawing.Point(2054, 893);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(216, 83);
+            this.button2.Size = new System.Drawing.Size(192, 66);
             this.button2.TabIndex = 2;
             this.button2.Text = "Exit";
             this.button2.UseVisualStyleBackColor = true;
@@ -73,10 +77,11 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1998, 1116);
+            this.button3.Location = new System.Drawing.Point(521, 672);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.button3.Size = new System.Drawing.Size(236, 83);
+            this.button3.Size = new System.Drawing.Size(390, 72);
             this.button3.TabIndex = 3;
             this.button3.Text = "Back";
             this.button3.UseVisualStyleBackColor = true;
@@ -84,18 +89,21 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(294, 652);
+            this.button4.Location = new System.Drawing.Point(314, 410);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(387, 140);
+            this.button4.Size = new System.Drawing.Size(341, 87);
             this.button4.TabIndex = 4;
             this.button4.Text = "Candidates";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(816, 652);
+            this.button5.Location = new System.Drawing.Point(737, 410);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(387, 140);
+            this.button5.Size = new System.Drawing.Size(341, 87);
             this.button5.TabIndex = 5;
             this.button5.Text = "Voters";
             this.button5.UseVisualStyleBackColor = true;
@@ -103,9 +111,10 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(816, 374);
+            this.button6.Location = new System.Drawing.Point(737, 104);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(387, 140);
+            this.button6.Size = new System.Drawing.Size(341, 87);
             this.button6.TabIndex = 6;
             this.button6.Text = "Start/End Date";
             this.button6.UseVisualStyleBackColor = true;
@@ -113,9 +122,10 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(1355, 374);
+            this.button7.Location = new System.Drawing.Point(314, 257);
+            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(387, 140);
+            this.button7.Size = new System.Drawing.Size(341, 87);
             this.button7.TabIndex = 7;
             this.button7.Text = "Start Elections";
             this.button7.UseVisualStyleBackColor = true;
@@ -123,18 +133,21 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(1355, 652);
+            this.button8.Location = new System.Drawing.Point(137, 548);
+            this.button8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(387, 140);
+            this.button8.Size = new System.Drawing.Size(341, 87);
             this.button8.TabIndex = 8;
             this.button8.Text = "Statistics";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(1847, 374);
+            this.button9.Location = new System.Drawing.Point(737, 257);
+            this.button9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(387, 140);
+            this.button9.Size = new System.Drawing.Size(341, 87);
             this.button9.TabIndex = 9;
             this.button9.Text = "End Elections";
             this.button9.UseVisualStyleBackColor = true;
@@ -142,19 +155,31 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(1847, 652);
+            this.button10.Location = new System.Drawing.Point(561, 548);
+            this.button10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(387, 140);
+            this.button10.Size = new System.Drawing.Size(341, 87);
             this.button10.TabIndex = 10;
             this.button10.Text = "Show Results for Voters";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(975, 548);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(294, 87);
+            this.button11.TabIndex = 11;
+            this.button11.Text = "Block Results From Voters";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // AdminDashboardForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2600, 1258);
+            this.ClientSize = new System.Drawing.Size(1837, 959);
+            this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
@@ -166,8 +191,10 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AdminDashboardForm";
             this.Text = "AdminDashboardForm";
+            this.Load += new System.EventHandler(this.AdminDashboardForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,5 +213,6 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
     }
 }

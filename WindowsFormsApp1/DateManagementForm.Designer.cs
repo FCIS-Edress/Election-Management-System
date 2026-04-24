@@ -41,26 +41,27 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(936, 122);
+            this.label1.Location = new System.Drawing.Point(492, 62);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(537, 58);
+            this.label1.Size = new System.Drawing.Size(447, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "Set Start and End Date";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(1145, 405);
+            this.dateTimePicker1.Location = new System.Drawing.Point(600, 184);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(528, 26);
+            this.dateTimePicker1.Size = new System.Drawing.Size(470, 22);
             this.dateTimePicker1.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(785, 379);
+            this.label2.Location = new System.Drawing.Point(280, 163);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(250, 58);
+            this.label2.Size = new System.Drawing.Size(208, 48);
             this.label2.TabIndex = 2;
             this.label2.Text = "Start Date";
             // 
@@ -68,24 +69,26 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(802, 564);
+            this.label3.Location = new System.Drawing.Point(295, 311);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(233, 58);
+            this.label3.Size = new System.Drawing.Size(193, 48);
             this.label3.TabIndex = 3;
             this.label3.Text = "End Date";
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(1145, 590);
+            this.dateTimePicker2.Location = new System.Drawing.Point(600, 332);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(528, 26);
+            this.dateTimePicker2.Size = new System.Drawing.Size(470, 22);
             this.dateTimePicker2.TabIndex = 4;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(2291, 1071);
+            this.button1.Location = new System.Drawing.Point(743, 423);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(220, 87);
+            this.button1.Size = new System.Drawing.Size(196, 70);
             this.button1.TabIndex = 5;
             this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = true;
@@ -93,9 +96,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1960, 1071);
+            this.button2.Location = new System.Drawing.Point(449, 423);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(220, 87);
+            this.button2.Size = new System.Drawing.Size(196, 70);
             this.button2.TabIndex = 6;
             this.button2.Text = "Back";
             this.button2.UseVisualStyleBackColor = true;
@@ -103,9 +107,9 @@
             // 
             // DateManagementForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2555, 1226);
+            this.ClientSize = new System.Drawing.Size(1924, 977);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dateTimePicker2);
@@ -113,6 +117,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "DateManagementForm";
             this.Text = "DateManagementForm";
             this.Load += new System.EventHandler(this.DateManagementForm_Load);

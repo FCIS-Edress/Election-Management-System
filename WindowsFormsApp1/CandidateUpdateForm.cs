@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp1
@@ -16,14 +18,20 @@ namespace WindowsFormsApp1
     public partial class CandidateUpdateForm : Form
     {
         private Form main;
+        OracleConnection conn;
+        private int id;
+        string ordb = "data source = orcl; user id = hr; password = hr;";
+        OracleDataAdapter da;
+        DataTable dt;
         public CandidateUpdateForm()
         {
             InitializeComponent();
         }
-        public CandidateUpdateForm(Form main)
+        public CandidateUpdateForm(Form main, int id)
         {
             InitializeComponent();
             this.main = main;
+            this.id = id;
         }
         private void label1_Click(object sender, EventArgs e)
         {
@@ -71,44 +79,60 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string firstName = textBox1.Text;
-            string secondName = textBox2.Text;
-            string city = textBox3.Text;
-            string email = textBox4.Text;
-            string password = textBox6.Text;
-            string confirmpassword = textBox8.Text;
-            string goals = textBox7.Text;
+            string firstName = fname.Text;
+            string secondName = lname.Text;
+            string city = ct.Text;
+            string email = em.Text;
+            string password = pass.Text;
+            string confirmpassword = cpass.Text;
+            string goals = goa.Text;
 
-            if (firstName == "" || secondName == "" || city == "" || email == "" || goals == "")
+            //if (firstName == "" || secondName == "" || city == "" || email == "" || goals == "")
+            //{
+            //    MessageBox.Show("Please fill all fields!");
+            //    return;
+            //}
+
+            //if (!IsValidEmail(email))
+            //{
+            //    MessageBox.Show("Please Submit Valid Email");
+            //    return;
+            //}
+
+            //if (!IsValidPassword(password))
+            //{
+            //    MessageBox.Show("Please Submit Valid Complex Password like Lolo123#");
+            //    return;
+            //}
+            //if (password != confirmpassword)
+            //{
+            //    MessageBox.Show("Please Make Sure the Passwords are the same");
+            //    return;
+            //}
+
+            if (dt.Rows.Count > 0)
             {
-                MessageBox.Show("Please fill all fields!");
-                return;
-            }
+                DataRow row = dt.Rows[0];
 
-            if (!IsValidEmail(email))
+                row["first_name"] = fname.Text;
+                row["last_name"] = lname.Text;
+                row["city"] = ct.Text;
+                row["email"] = em.Text;
+                row["password"] = pass.Text;
+                row["goals"] = goa.Text;
+
+                OracleCommandBuilder cb = new OracleCommandBuilder(da);
+
+                da.Update(dt);
+
+                MessageBox.Show("Updated successfully");
+            }
+            else
             {
-                MessageBox.Show("Please Submit Valid Email");
-                return;
+                MessageBox.Show("Failed To Update");
             }
-
-            if (!IsValidPassword(password))
-            {
-                MessageBox.Show("Please Submit Valid Complex Password like Lolo123#");
-                return;
-            }
-            if (password != confirmpassword)
-            {
-                MessageBox.Show("Please Make Sure the Passwords are the same");
-                return;
-            }
-
-            MessageBox.Show($"Update Successful!\n\n" +
-                $"Name: {firstName} {secondName}\n" +
-                $"City: {city}\n" +
-                $"Email: {email}\n" +
-                $"Password: {password}");
-
-            // missing the update statements for oracle
+            this.main.Show();
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -139,6 +163,41 @@ namespace WindowsFormsApp1
             {
                 e.Handled = true;
             }
+        }
+
+        private void CandidateUpdateForm_Load(object sender, EventArgs e)
+        {
+            conn = new OracleConnection(ordb);
+            conn.Open();
+            da = new OracleDataAdapter();
+
+            da.SelectCommand = new OracleCommand();
+            da.SelectCommand.Connection = conn;
+            da.SelectCommand.CommandType = CommandType.Text;
+
+            da.SelectCommand.CommandText = "SELECT candidate_id ,first_name, last_name, city, email, password, goals FROM candidates WHERE candidate_id = :id";
+
+            da.SelectCommand.Parameters.Add("id", OracleDbType.Int32).Value = id;
+
+            dt = new DataTable();
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+                fname.Text = row["first_name"].ToString();
+                lname.Text = row["last_name"].ToString();
+                ct.Text = row["city"].ToString();
+                em.Text = row["email"].ToString();
+                pass.Text = row["password"].ToString();
+                cpass.Text = row["password"].ToString();
+                goa.Text = row["goals"].ToString();
+            }
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

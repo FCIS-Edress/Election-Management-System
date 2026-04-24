@@ -39,17 +39,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1090, 48);
+            this.label1.Location = new System.Drawing.Point(571, 57);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(398, 58);
+            this.label1.Size = new System.Drawing.Size(330, 48);
             this.label1.TabIndex = 7;
             this.label1.Text = "Candidates Data";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(2240, 1156);
+            this.button2.Location = new System.Drawing.Point(742, 534);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(232, 99);
+            this.button2.Size = new System.Drawing.Size(219, 96);
             this.button2.TabIndex = 6;
             this.button2.Text = "Save";
             this.button2.UseVisualStyleBackColor = true;
@@ -57,9 +59,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1943, 1156);
+            this.button1.Location = new System.Drawing.Point(478, 534);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(232, 99);
+            this.button1.Size = new System.Drawing.Size(219, 96);
             this.button1.TabIndex = 5;
             this.button1.Text = "back";
             this.button1.UseVisualStyleBackColor = true;
@@ -68,22 +71,24 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(602, 153);
+            this.dataGridView1.Location = new System.Drawing.Point(133, 149);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1295, 866);
+            this.dataGridView1.Size = new System.Drawing.Size(1203, 365);
             this.dataGridView1.TabIndex = 4;
             // 
             // CandidatesEditForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2545, 1305);
+            this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "CandidatesEditForm";
             this.Text = "CandidatesEditForm";
             this.Load += new System.EventHandler(this.CandidatesEditForm_Load);

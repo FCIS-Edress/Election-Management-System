@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,8 @@ namespace WindowsFormsApp1
     public partial class ResultsForm : Form
     {
         private Form main;
-
+        OracleConnection conn;
+        string ordb = "data source = orcl; user id = hr; password = hr;";
         public ResultsForm()
         {
             InitializeComponent();
@@ -28,7 +30,8 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.main.Show();
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -39,17 +42,19 @@ namespace WindowsFormsApp1
 
         private void ResultsForm_Load(object sender, EventArgs e)
         {
-            // bishoy please load these results only
-            // this is an example of the needed results
+            conn = new OracleConnection(ordb);
+            conn.Open();
 
-            //            SELECT
-            //    c.candidate_name,
-            //    c.party,
-            //    COUNT(v.vote_id) AS total_votes
-            //FROM votes v
-            //JOIN candidates c ON v.candidate_id = c.candidate_id
-            //GROUP BY c.candidate_name, c.party
-            //ORDER BY total_votes DESC;
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "get_election_results";
+            cmd.Parameters.Add("res", OracleDbType.RefCursor, ParameterDirection.Output);
+
+            OracleDataReader reader = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            dataGridView1.DataSource = dt;
         }
     }
 }

@@ -37,5 +37,10 @@ namespace WindowsFormsApp1
         {
             Application.Exit();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

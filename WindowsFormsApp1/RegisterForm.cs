@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,8 @@ namespace WindowsFormsApp1
     public partial class RegisterForm : Form
     {
         private Form main;
-
+        OracleConnection conn;
+        string ordb = "data source = orcl; user id = hr; password = hr;";
         public RegisterForm()
         {
             InitializeComponent();
@@ -88,14 +90,27 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            MessageBox.Show($"Registration Successful!\n\n" +
-                $"Name: {firstName} {secondName}\n" +
-                $"Birthday: {birthday}\n" +
-                $"Gender: {gender}\n" +
-                $"National ID: {nationalID}\n" +
-                $"City: {city}\n"+
-                $"Email: {email}\n" +
-                $"Password: {password}");
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = @"INSERT INTO voters 
+    (first_name, last_name, birthday, gender, national_id, city, email, password, has_voted)
+    VALUES 
+    (:first_name, :last_name, :birthday, :gender, :national_id, :city, :email, :password, 0)";
+
+            cmd.Parameters.Add("first_name", OracleDbType.Varchar2).Value = firstName;
+            cmd.Parameters.Add("last_name", OracleDbType.Varchar2).Value = secondName;
+            cmd.Parameters.Add("birthday", OracleDbType.Date).Value = dateTimePicker1.Value;
+            cmd.Parameters.Add("gender", OracleDbType.Varchar2).Value = gender;
+            cmd.Parameters.Add("national_id", OracleDbType.Varchar2).Value = nationalID;
+            cmd.Parameters.Add("city", OracleDbType.Varchar2).Value = city;
+            cmd.Parameters.Add("email", OracleDbType.Varchar2).Value = email;
+            cmd.Parameters.Add("password", OracleDbType.Varchar2).Value = password;
+
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Registration Successful!");
+            this.main.Show();
+            this.Close();
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -126,7 +141,8 @@ namespace WindowsFormsApp1
 
         private void RegisterForm_Load(object sender, EventArgs e)
         {
-
+            conn = new OracleConnection(ordb);
+            conn.Open();
         }
 
         private void textBox5_KeyPress(object sender, KeyPressEventArgs e)

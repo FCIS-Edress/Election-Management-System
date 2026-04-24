@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,8 @@ namespace WindowsFormsApp1
     {
 
         private Form main;
+        OracleConnection conn;
+        string ordb = "data source = orcl; user id = hr; password = hr;";
         public DateManagementForm()
         {
             InitializeComponent();
@@ -48,11 +51,31 @@ namespace WindowsFormsApp1
                 MessageBox.Show("End date must be after start date.");
                 return;
             }
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.Text;
+
+            cmd.CommandText = @"
+        INSERT INTO elections 
+        (election_id, start_date, end_date, is_running, show_results)
+        VALUES 
+        (elections_seq.NEXTVAL, :startDate, :endDate, 0, 0)";
+
+            cmd.Parameters.Add("startDate", OracleDbType.Date).Value = _StartDate;
+            cmd.Parameters.Add("endDate", OracleDbType.Date).Value = _EndDate;
+
+            cmd.ExecuteNonQuery();
+
+            MessageBox.Show("Election created successfully");
+
+            this.main.Show();
+            this.Close();
         }
 
         private void DateManagementForm_Load(object sender, EventArgs e)
         {
-
+            conn = new OracleConnection(ordb);
+            conn.Open();
         }
     }
 }

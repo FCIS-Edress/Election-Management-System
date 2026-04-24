@@ -1,0 +1,187 @@
+################################ Make 6 New Tables For Our DB ################################
+CREATE TABLE voters (
+    voter_id NUMBER PRIMARY KEY,
+    first_name VARCHAR2(50) NOT NULL,
+    last_name VARCHAR2(50) NOT NULL,
+    birthday DATE,
+    gender VARCHAR2(10),
+    national_id VARCHAR2(20) UNIQUE,
+    city VARCHAR2(50),
+    email VARCHAR2(100) UNIQUE,
+    password VARCHAR2(100),
+    has_voted NUMBER(1) DEFAULT 0
+);
+
+CREATE SEQUENCE voters_seq START WITH 1 INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER voters_trg
+BEFORE INSERT ON voters
+FOR EACH ROW
+BEGIN
+    :NEW.voter_id := voters_seq.NEXTVAL;
+END;
+/
+CREATE TABLE candidates (
+    candidate_id NUMBER PRIMARY KEY,
+    first_name VARCHAR2(50) NOT NULL,
+    last_name VARCHAR2(50) NOT NULL,
+    birthday DATE,
+    gender VARCHAR2(10),
+    national_id VARCHAR2(20) UNIQUE,
+    city VARCHAR2(50),
+    email VARCHAR2(100) UNIQUE,
+    password VARCHAR2(100),
+    goals CLOB,
+    is_accepted NUMBER(1) DEFAULT 0
+    votes_count NUMBER(100) DEAFULT 0
+);
+
+CREATE SEQUENCE candidates_seq START WITH 1 INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER candidates_trg
+BEFORE INSERT ON candidates
+FOR EACH ROW
+BEGIN
+    :NEW.candidate_id := candidates_seq.NEXTVAL;
+END;
+/
+CREATE TABLE admins (
+    admin_id NUMBER PRIMARY KEY,
+    email VARCHAR2(100) UNIQUE,
+    password VARCHAR2(100)
+);
+
+CREATE SEQUENCE admins_seq START WITH 1 INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER admins_trg
+BEFORE INSERT ON admins
+FOR EACH ROW
+BEGIN
+    :NEW.admin_id := admins_seq.NEXTVAL;
+END;
+/
+CREATE TABLE elections (
+    election_id NUMBER PRIMARY KEY,
+    start_date DATE,
+    end_date DATE,
+    is_running NUMBER(1) DEFAULT 0,
+    show_results NUMBER(1) DEFAULT 0
+);
+
+CREATE SEQUENCE elections_seq START WITH 1 INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER elections_trg
+BEFORE INSERT ON elections
+FOR EACH ROW
+BEGIN
+    :NEW.election_id := elections_seq.NEXTVAL;
+END;
+/
+CREATE TABLE votes (
+    vote_id NUMBER PRIMARY KEY,
+    voter_id NUMBER,
+    candidate_id NUMBER,
+    election_id NUMBER,
+    vote_date DATE DEFAULT SYSDATE,
+
+    CONSTRAINT fk_voter
+        FOREIGN KEY (voter_id)
+        REFERENCES voters(voter_id),
+
+    CONSTRAINT fk_candidate
+        FOREIGN KEY (candidate_id)
+        REFERENCES candidates(candidate_id),
+
+    CONSTRAINT unique_vote UNIQUE (voter_id, election_id)
+);
+
+CREATE SEQUENCE votes_seq START WITH 1 INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER votes_trg
+BEFORE INSERT ON votes
+FOR EACH ROW
+BEGIN
+    :NEW.vote_id := votes_seq.NEXTVAL;
+END;
+/
+####################### Stored Procedure That Return All Emails And Passwords For All Users ###################
+CREATE OR REPLACE PROCEDURE login_check(
+    res OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN res FOR
+        SELECT email, password, 'admin' AS role FROM admins
+        UNION ALL
+        SELECT email, password, 'candidate' FROM candidates
+        UNION ALL
+        SELECT email, password, 'voter' FROM voters;
+END;
+/
+################## Stored Procedure That Return All Rows From Voters ###################
+CREATE OR REPLACE PROCEDURE retrive_voters(
+    res OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN res FOR
+        select *
+        from voters
+END;
+################## Stored Procedure That Return All Rows From Candidates ###################
+CREATE OR REPLACE PROCEDURE retrive_candidates(
+    res OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN res FOR
+        select *
+        from candidates
+END;
+################## Stored Procedure That Return The Results From Elections ###################
+CREATE OR REPLACE PROCEDURE get_election_results(
+    res OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN res FOR
+        SELECT c.first_name || ' ' || c.last_name AS candidate_name,
+               COUNT(v.vote_id) AS total_votes
+        FROM candidates c
+        LEFT JOIN votes v ON v.candidate_id = c.candidate_id
+        GROUP BY c.candidate_id, c.first_name, c.last_name
+        ORDER BY total_votes DESC;
+END;
+/
+################## Stored Procedure That Return Show Results Status For Voters ###################
+CREATE OR REPLACE PROCEDURE get_results_status (
+    p_status OUT NUMBER
+)
+AS
+BEGIN
+    SELECT MAX(show_results)
+    INTO p_status
+    FROM elections;
+END;
+################## Stored Procedure That Return Elections Running Status ###################
+CREATE OR REPLACE PROCEDURE get_election_status (
+    p_status OUT NUMBER
+)
+AS
+BEGIN
+    SELECT MAX(is_running)
+    INTO p_status
+    FROM elections;
+END;
+################## Stored Procedure That Return Voter Status ###################
+CREATE OR REPLACE PROCEDURE get_has_voted (
+    p_id        IN NUMBER,
+    p_has_voted OUT NUMBER
+)
+AS
+BEGIN
+    SELECT has_voted
+    INTO p_has_voted
+    FROM voters
+    WHERE voter_id = p_id;
+END;

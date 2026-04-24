@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,8 @@ namespace WindowsFormsApp1
     public partial class AdminDashboardForm : Form
     {
         private Form main;
+        OracleConnection conn;
+        string ordb = "data source = orcl; user id = hr; password = hr;";
 
         public AdminDashboardForm()
         {
@@ -45,49 +48,149 @@ namespace WindowsFormsApp1
 
         private void button7_Click(object sender, EventArgs e)
         {
-            // bishoy make the flag true IsElectionRunning
-            // before that check if it's value is true 
-            //if(IsElectionRunning== true)
+            bool status = get_election_status();
+            if (status == false)
+                MessageBox.Show("All Election Already Opened");
+            else
             {
-                MessageBox.Show("Elections are already Running");
-            }
-            //else
-            {
-                MessageBox.Show("Elections Started");
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "UPDATE elections SET is_running = 1";
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("All Election Opened");
             }
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            // bishoy make the flag false IsElectionRunning
-            // before that check if it's value is false
-            //if(IsElectionRunning== False)
+            bool status = get_election_status();
+            if (status == true)
+                MessageBox.Show("All Election Already Closed");
+            else
             {
-                MessageBox.Show("Elections are already Stopped");
-            }
-            //else
-            {
-                MessageBox.Show("Elections Ended");
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "UPDATE elections SET is_running = 0";
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("All Election Closed");
             }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            bool status = get_election_status();
+            if (status == false)
+                MessageBox.Show("Cannot Show While Election Is Running");
+            else
+            {
+                new UsersEditForm(this).Show();
+                this.Hide();
+            }
+        }
+        private bool get_results_status()
+        {
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "get_results_status";
 
+            cmd.Parameters.Add("p_status", OracleDbType.Int32, ParameterDirection.Output);
+
+            cmd.ExecuteNonQuery();
+
+            int status = ((Oracle.DataAccess.Types.OracleDecimal)cmd.Parameters[0].Value).ToInt32();
+
+            return status == 0; 
+        }
+        private bool get_election_status()
+        {
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "get_election_status";
+
+            cmd.Parameters.Add("p_status", OracleDbType.Int32, ParameterDirection.Output);
+
+            cmd.ExecuteNonQuery();
+
+            int status = ((Oracle.DataAccess.Types.OracleDecimal)cmd.Parameters[0].Value).ToInt32();
+            return status == 0;
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            // bishoy make the flag true ShowResults 
-            // before that check if it's value is false
-            //if(showresults == true)
+            bool status = get_results_status();
+
+            if (status == false)
+                MessageBox.Show("Results already opened");
+            else
             {
-                MessageBox.Show("Show Results Turned off");
-            }
-            //else(showresults == false)
-            {
-                MessageBox.Show("Show Results Turned on");
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = conn;
+                cmd.CommandText = "UPDATE elections SET show_results = 1";
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Results opened");
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            bool status = get_election_status();
+            if (status == false)
+                MessageBox.Show("Cannot Show While Election Is Running");
+            else
+            {
+                new CandidatesEditForm(this, "edit").Show();
+                this.Hide();
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            new ResultsForm(this).Show();
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            bool status = get_election_status();
+            if (status == false)
+                MessageBox.Show("Cannot Accept OR Reject While Election Is Running");
+            else
+            {
+                new CandidatesEditForm(this, "Approve").Show();
+                this.Hide();
+            }
+        }
+
+        private void AdminDashboardForm_Load(object sender, EventArgs e)
+        {
+            conn = new OracleConnection(ordb);
+            conn.Open();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            bool status = get_results_status();
+
+            if (status == true)
+                MessageBox.Show("Results already closed");
+            else
+            {
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = conn;
+                cmd.CommandText = "UPDATE elections SET show_results = 0";
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Results Closed");
+            }
+
+        }
+
     }
 }
