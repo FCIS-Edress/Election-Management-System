@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -33,12 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Oracle.DataAccess, Version=2.112.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>F:\app\bisho\product\11.2.0\dbhome_1\ODP.NET\bin\2.x\Oracle.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -92,6 +98,12 @@
     <Compile Include="DateManagementForm.Designer.cs">
       <DependentUpon>DateManagementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Election_filter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Election_filter.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,11 +124,35 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report_Show_Election.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report_Show_Election.Designer.cs">
+      <DependentUpon>Report_Show_Election.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report_Show_Has_Voted.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report_Show_Has_Voted.Designer.cs">
+      <DependentUpon>Report_Show_Has_Voted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report_Voters.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Report_Voters.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ResultsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ResultsForm.Designer.cs">
       <DependentUpon>ResultsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report_Show_Winner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report_Show_Winner.Designer.cs">
+      <DependentUpon>Report_Show_Winner.cs</DependentUpon>
     </Compile>
     <Compile Include="UserDashboardForm.cs">
       <SubType>Form</SubType>
@@ -142,6 +178,12 @@
     <Compile Include="UserVoteForm.Designer.cs">
       <DependentUpon>UserVoteForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Winner_Report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Winner_Report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="AdminDashboardForm.resx">
       <DependentUpon>AdminDashboardForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +205,10 @@
     <EmbeddedResource Include="DateManagementForm.resx">
       <DependentUpon>DateManagementForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Election_filter.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Election_filter.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,8 +227,21 @@
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report_Show_Election.resx">
+      <DependentUpon>Report_Show_Election.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report_Show_Has_Voted.resx">
+      <DependentUpon>Report_Show_Has_Voted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report_Voters.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Report_Voters.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ResultsForm.resx">
       <DependentUpon>ResultsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report_Show_Winner.resx">
+      <DependentUpon>Report_Show_Winner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserDashboardForm.resx">
       <DependentUpon>UserDashboardForm.cs</DependentUpon>
@@ -196,6 +255,10 @@
     <EmbeddedResource Include="UserVoteForm.resx">
       <DependentUpon>UserVoteForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Winner_Report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Winner_Report.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -208,6 +271,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

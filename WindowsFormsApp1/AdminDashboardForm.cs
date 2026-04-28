@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
+    
     public partial class AdminDashboardForm : Form
     {
         private Form main;
@@ -159,7 +160,7 @@ namespace WindowsFormsApp1
         {
             bool status = get_election_status();
             if (status == false)
-                MessageBox.Show("Cannot Accept OR Reject While Election Is Running");
+                MessageBox.Show("Cannot Accept Or Reject While Election Is Running");
             else
             {
                 new CandidatesEditForm(this, "Approve").Show();
@@ -191,6 +192,27 @@ namespace WindowsFormsApp1
             }
 
         }
+        
 
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Report_Show_Has_Voted rp1 = new Report_Show_Has_Voted(this);
+            rp1.Show();
+            this.Hide();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            Report_Show_Election rp2 = new Report_Show_Election(this);
+            rp2.Show();
+            this.Hide();
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            Report_Show_Winner rp3 = new Report_Show_Winner(this);
+            rp3.Show();
+            this.Hide();
+        }
     }
 }
